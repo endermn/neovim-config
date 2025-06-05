@@ -3,6 +3,8 @@
 
 This is my personal Neovim configuration. It includes a curated set of plugins and custom keybindings to enhance productivity and usability.
 
+## Dependencies
+Make sure to have the required dependencies installed, such as `ripgrep`, `python`, `npm` `fd`, and `git`.
 
 ## Plugins
 
@@ -67,10 +69,14 @@ This is my personal Neovim configuration. It includes a curated set of plugins a
 
 ## Getting Started
 
+BEFORE you start, make sure you have backed up your existing Neovim configuration if you have one, as this will overwrite it.
+
 Clone this repo into your Neovim config directory:
 
 ```sh
-git clone <this-repo-url> ~/.config/nvim
+git clone https://github.com/endermn/neovim-config ~/.config/nvim
 ```
 
 Then launch Neovim and run `:Lazy` or your plugin manager's install command.
+After installation, run `:Mason` to ensure all LSP servers and tools are installed.
+
