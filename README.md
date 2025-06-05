@@ -60,7 +60,7 @@ This is my personal Neovim configuration. It includes a curated set of plugins a
 | n            | <leader>lg            | `<cmd>LazyGit<CR>`                                     | Open LazyGit                                 |
 | v            | J                     | `:m '>+1<CR>gv=gv`                                     | Move selected lines down                     |
 | v            | K                     | `:m '<-2<CR>gv=gv`                                     | Move selected lines up                       |
-| i            | <C-l>                 | `copilot#Accept("<CR>")` (expr)                        | Accept GitHub Copilot suggestion             |
+| i            | Ctrl-l                 | `copilot#Accept("<CR>")` (expr)                        | Accept GitHub Copilot suggestion             |
 
 - `<leader>` is set to <kbd>Space</kbd>
 - `<localleader>` is set to <kbd>Space</kbd>
