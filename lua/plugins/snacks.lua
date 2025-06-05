@@ -103,12 +103,12 @@ return {
                 }
             },
             image = {
-                enabled = true,
+                enabled = false,
                 doc = {
                     float = true, -- show image on cursor hover
                     inline = false, -- show image inline
-                    max_width = 50,
-                    max_height = 30,
+                    max_width = 80,
+                    max_height = 80,
                     wo = {
                         wrap = false,
                     },
@@ -127,10 +127,10 @@ return {
                     { section = "startup" },
                     {
                         section = "terminal",
-                        cmd = "ascii-image-converter ~/Desktop/Others/profiles.JPG -C -c",
+                        cmd = "ascii-image-converter ~/Documents/neovim-art/wallpaper.png -C -c",
                         random = 15,
-                        pane = 2,
-                        indent = 15,
+                        pane = 50,
+                        indent = 30,
                         height = 20,
                     },
                 },
