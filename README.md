@@ -6,10 +6,34 @@ This is my personal Neovim configuration. It includes a curated set of plugins a
 
 ## Plugins
 
-- [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Lua functions that many plugins use
-- [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) - Tmux & split window navigation
-- [jesseleite/vim-noh](https://github.com/jesseleite/vim-noh) - Quickly clear search highlighting
-- [alec-gibson/nvim-tetris](https://github.com/alec-gibson/nvim-tetris) - Play Tetris in Neovim
+- lsp-config.lua
+- mason.lua
+- auto-pairs.lua
+- auto-sessions.lua
+- cellular-automaton.lua
+- colorscheme.lua
+- copilot.lua
+- formatting.lua
+- gitstuff.lua
+- gitworktree.lua
+- harpoon.lua
+- image-support.lua
+- incline.lua
+- init.lua
+- linting.lua
+- lualine.lua
+- mini.lua
+- noice.lua
+- nvim-cmp.lua
+- nvim-ufo.lua
+- oil.lua
+- snacks.lua
+- telescope.lua
+- todo-comments.lua
+- treesitter.lua
+- trouble.lua
+- undo-tree.lua
+- wilder.lua
 
 ## Keybindings
 
