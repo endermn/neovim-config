@@ -78,5 +78,6 @@ git clone https://github.com/endermn/neovim-config ~/.config/nvim
 ```
 
 Then launch Neovim and run `:Lazy` or your plugin manager's install command.
+
 After installation, run `:Mason` to ensure all LSP servers and tools are installed.
 
