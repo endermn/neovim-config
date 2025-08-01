@@ -42,6 +42,7 @@ return {
 				"pyright",
                 "tailwindcss",
                 "gopls",
+				"clangd",
                 "emmet_ls",
                 "emmet_language_server",
                 -- "eslint",

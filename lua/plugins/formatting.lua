@@ -64,7 +64,7 @@ return {
 			prepend_args = { "-i", "4" },
 		}
 
-		vim.keymap.set({ "n", "v" }, "<leader>mf", function()
+		vim.keymap.set({ "n", "v" }, "<leader>fd", function()
 			conform.format({
 				lsp_fallback = true,
 				async = false,

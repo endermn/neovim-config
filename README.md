@@ -4,7 +4,7 @@
 This is my personal Neovim configuration. It includes a curated set of plugins and custom keybindings to enhance productivity and usability.
 
 ## Dependencies
-Make sure to have the required dependencies installed, such as `ripgrep`, `python`, `npm` `fd`, and `git`.
+Make sure to have the required dependencies installed, such as `lazygit`, `ripgrep`, `python`, `npm` `fd`, and `git`.
 
 ## Plugins
 
@@ -60,6 +60,7 @@ Make sure to have the required dependencies installed, such as `ripgrep`, `pytho
 | n            | <leader>fw            | `<cmd>Telescope live_grep<CR>`                         | Live grep files                              |
 | n            | <leader>th            | `<cmd>Telescope themes<CR>`                            | Theme Switcher                               |
 | n            | <leader>lg            | `<cmd>LazyGit<CR>`                                     | Open LazyGit                                 |
+| v            | <leader>ai            | `<cmd>gevai <prompt> <code><CR>`                       | Gives the selected code to gevai             |
 | v            | J                     | `:m '>+1<CR>gv=gv`                                     | Move selected lines down                     |
 | v            | K                     | `:m '<-2<CR>gv=gv`                                     | Move selected lines up                       |
 | i            | Ctrl-l                | `copilot#Accept("<CR>")` (expr)                        | Accept GitHub Copilot suggestion             |
