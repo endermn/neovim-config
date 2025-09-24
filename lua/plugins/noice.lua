@@ -1,5 +1,6 @@
 return {
     {
+		cond = not vim.g.vscode,
 		"folke/noice.nvim",
         event = "VeryLazy",
         enabled = true,

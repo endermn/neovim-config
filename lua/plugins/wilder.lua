@@ -1,6 +1,7 @@
 return {
 	"gelguy/wilder.nvim",
 	-- "nvim-telescope/telescope.nvim",
+	cond = not vim.g.vscode, -- Disable in VSCode Neovim
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"romgrk/fzy-lua-native",

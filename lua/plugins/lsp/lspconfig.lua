@@ -58,6 +58,8 @@ return {
 			end,
 		})
 
+		local util = require("lspconfig.util")
+
 		-- NOTE : Moved all this to Mason including local variables
 		-- used to enable autocompletion (assign to every lsp server config)
 		-- local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -86,13 +88,12 @@ return {
 		-- as mason setup_handlers is deprecated & its causing issues with lsp settings
 		--
 		-- Setup servers
-		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Config lsp servers here
 		-- lua_ls
-		lspconfig.lua_ls.setup({
+		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
@@ -112,7 +113,7 @@ return {
 			},
 		})
 		-- emmet_ls
-		lspconfig.emmet_ls.setup({
+		vim.lsp.config("emmet_ls", {
 			capabilities = capabilities,
 			filetypes = {
 				"html",
@@ -127,7 +128,7 @@ return {
 		})
 
 		-- emmet_language_server
-		lspconfig.emmet_language_server.setup({
+		vim.lsp.config("emmet_language_server", {
 			capabilities = capabilities,
 			filetypes = {
 				"css",
@@ -155,16 +156,15 @@ return {
 		})
 
 		-- denols
-		lspconfig.denols.setup({
+		vim.lsp.config("denols", {
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+			root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 		})
 
 		-- ts_ls (replaces tsserver)
-		lspconfig.ts_ls.setup({
+		vim.lsp.config("ts_ls", {
 			capabilities = capabilities,
 			root_dir = function(fname)
-				local util = lspconfig.util
 				return not util.root_pattern("deno.json", "deno.jsonc")(fname)
 					and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
 			end,
@@ -177,61 +177,13 @@ return {
 			},
 		})
 
-		-- HACK: If using Blink.cmp Configure all LSPs here
+		vim.lsp.config("clangd", { capabilities = capabilities })
+		vim.lsp.config("gopls", { capabilities = capabilities })
 
-		-- ( comment the ones in mason )
-		-- local lspconfig = require("lspconfig")
-		-- local capabilities = require("blink.cmp").get_lsp_capabilities() -- Import capabilities from blink.cmp
-
-		-- Configure lua_ls
-		-- lspconfig.lua_ls.setup({
-		--     capabilities = capabilities,
-		--     settings = {
-		--         Lua = {
-		--             diagnostics = {
-		--                 globals = { "vim" },
-		--             },
-		--             completion = {
-		--                 callSnippet = "Replace",
-		--             },
-		--             workspace = {
-		--                 library = {
-		--                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-		--                     [vim.fn.stdpath("config") .. "/lua"] = true,
-		--                 },
-		--             },
-		--         },
-		--     },
-		-- })
-		--
-		-- -- Configure tsserver (TypeScript and JavaScript)
-		-- lspconfig.ts_ls.setup({
-		--     capabilities = capabilities,
-		--     root_dir = function(fname)
-		--         local util = lspconfig.util
-		--         return not util.root_pattern('deno.json', 'deno.jsonc')(fname)
-		--             and util.root_pattern('tsconfig.json', 'package.json', 'jsconfig.json', '.git')(fname)
-		--     end,
-		--     single_file_support = false,
-		--     on_attach = function(client, bufnr)
-		--         -- Disable formatting if you're using a separate formatter like Prettier
-		--         client.server_capabilities.documentFormattingProvider = false
-		--     end,
-		--     init_options = {
-		--         preferences = {
-		--             includeCompletionsWithSnippetText = true,
-		--             includeCompletionsForImportStatements = true,
-		--         },
-		--     },
-		-- })
-
-		-- Add other LSP servers as needed, e.g., gopls, eslint, html, etc.
-		lspconfig.clangd.setup({ capabilities = capabilities })
-		lspconfig.gopls.setup({ capabilities = capabilities })
 		-- Python LSP (pyright)
-		lspconfig.pyright.setup({
+		vim.lsp.config("pyright", {
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern(
+			root_dir = util.root_pattern(
 				"pyproject.toml",
 				"setup.py",
 				"setup.cfg",
@@ -239,7 +191,5 @@ return {
 				".git"
 			),
 		})
-		-- lspconfig.html.setup({ capabilities = capabilities })
-		-- lspconfig.cssls.setup({ capabilities = capabilities })
 	end,
 }

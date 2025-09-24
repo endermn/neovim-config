@@ -1,7 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "master", -- using master to fix issues with deprecated to definition warnings 
-    -- '0.1.x' for stable ver.
+	branch = "master", -- using master to fix issues with deprecated to definition warnings
+	-- '0.1.x' for stable ver.
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -42,6 +42,13 @@ return {
 		vim.keymap.set("n", "<leader>fof", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
 		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files" })
 		vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "live grep files" })
-		vim.keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { noremap = true, silent = true, desc = "Theme Switcher" })
-    end,
+		vim.keymap.set(
+			"n",
+			"<leader>th",
+			"<cmd>Telescope themes<CR>",
+			{ noremap = true, silent = true, desc = "Theme Switcher" }
+		)
+
+		-- Custom Telescope wrapper for LSP implementations
+	end,
 }

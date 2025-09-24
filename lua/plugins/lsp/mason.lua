@@ -39,7 +39,7 @@ return {
                 -- "ts_ls", currently using a ts plugin
                 "html",
                 "cssls",
-				"pyright",
+				"ruff",
                 "tailwindcss",
                 "gopls",
 				"clangd",
