@@ -4,7 +4,6 @@
 This is my personal Neovim configuration. It includes a curated set of plugins and custom keybindings to enhance productivity and usability.
 
 ## Dependencies
-<<<<<<< Updated upstream
 Make sure to have the required dependencies installed, such as `lazygit`, `ripgrep`, `python`, `npm` `fd`, and `git`.
 =======
 Make sure you have the following dependencies installed for full functionality:
@@ -19,7 +18,6 @@ You can install them on macOS with:
 ```sh
 brew install ripgrep fd git python npm
 ```
->>>>>>> Stashed changes
 
 ## Plugins
 
