@@ -58,12 +58,6 @@ return {
 			end,
 		})
 
-		-- NOTE : Moved all this to Mason including local variables
-		-- used to enable autocompletion (assign to every lsp server config)
-		-- local capabilities = cmp_nvim_lsp.default_capabilities()
-		-- Change the Diagnostic symbols in the sign column (gutter)
-
-		-- Define sign icons for each severity
 		local signs = {
 			[vim.diagnostic.severity.ERROR] = " ",
 			[vim.diagnostic.severity.WARN] = " ",
@@ -74,125 +68,48 @@ return {
 		-- Set the diagnostic config with all icons
 		vim.diagnostic.config({
 			signs = {
-				text = signs, -- Enable signs in the gutter
+				text = signs,
 			},
-			virtual_text = true, -- Specify Enable virtual text for diagnostics
-			underline = true, -- Specify Underline diagnostics
-			update_in_insert = false, -- Keep diagnostics active in insert mode
+			virtual_text = true,
+			underline = true,
+			update_in_insert = false,
 		})
 
-		-- NOTE :
-		-- Moved back from mason_lspconfig.setup_handlers from mason.lua file
-		-- as mason setup_handlers is deprecated & its causing issues with lsp settings
-		--
-		-- Setup servers
-		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- Config lsp servers here
-		-- lua_ls
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					completion = {
-						callSnippet = "Replace",
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-				},
-			},
-		})
-		-- emmet_ls
-		lspconfig.emmet_ls.setup({
-			capabilities = capabilities,
-			filetypes = {
-				"html",
-				"typescriptreact",
-				"javascriptreact",
-				"css",
-				"sass",
-				"scss",
-				"less",
-				"svelte",
-			},
-		})
+		-- LSP Servers
 
-		-- emmet_language_server
-		lspconfig.emmet_language_server.setup({
-			capabilities = capabilities,
-			filetypes = {
-				"css",
-				"eruby",
-				"html",
-				"javascript",
-				"javascriptreact",
-				"less",
-				"sass",
-				"scss",
-				"pug",
-				"typescriptreact",
-			},
-			init_options = {
-				includeLanguages = {},
-				excludeLanguages = {},
-				extensionsPath = {},
-				preferences = {},
-				showAbbreviationSuggestions = true,
-				showExpandedAbbreviation = "always",
-				showSuggestionsAsSnippets = false,
-				syntaxProfiles = {},
-				variables = {},
-			},
-		})
+		-- lua_ls
+		vim.lsp.config("lua_ls", {capabilities = capabilities})
+
+		-- emmet_ls
+		vim.lsp.config("emmet_ls", {capabilities = capabilities})
 
 		-- denols
-		lspconfig.denols.setup({
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-		})
+		vim.lsp.config("denols", {capabilities = capabilities})
 
-		-- ts_ls (replaces tsserver)
-		lspconfig.ts_ls.setup({
-			capabilities = capabilities,
-			root_dir = function(fname)
-				local util = lspconfig.util
-				return not util.root_pattern("deno.json", "deno.jsonc")(fname)
-					and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
-			end,
-			single_file_support = false,
-			init_options = {
-				preferences = {
-					includeCompletionsWithSnippetText = true,
-					includeCompletionsForImportStatements = true,
-				},
-			},
-		})
+		-- clangd
+		vim.lsp.config("clangd", {capabilities = capabilities})
 
-
-		-- Add other LSP servers as needed, e.g., gopls, eslint, html, etc.
-		lspconfig.clangd.setup({ capabilities = capabilities })
-		lspconfig.gopls.setup({ capabilities = capabilities })
+		-- gopls
+		vim.lsp.config("gopls", {capabilities = capabilities})
 		-- Python LSP (pyright)
-		lspconfig.pyright.setup({
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern(
-				"pyproject.toml",
-				"setup.py",
-				"setup.cfg",
-				"requirements.txt",
-				".git"
-			),
+		--
+		vim.filetype.add({
+			filename = {
+				["pyproject.toml"] = "python",
+				["setup.py"] = "python",
+				["setup.cfg"] = "python",
+				["requirements.txt"] = "python",
+			}
 		})
-		-- lspconfig.html.setup({ capabilities = capabilities })
-		-- lspconfig.cssls.setup({ capabilities = capabilities })
+		vim.lsp.config("pyright", {
+			capabilities = capabilities,
+			filetypes = { "python", "py" },
+		})
+
 	end,
+
+	vim.lsp.enable({"lua_ls", "emmet_ls", "denols", "clangd", "gopls", "pyright"})
 }
