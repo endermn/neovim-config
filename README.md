@@ -1,10 +1,10 @@
 
-# Neovim Configuration
+# Neovim Configuration !!Neovim >= 0.11
 
 This is my personal Neovim configuration. It includes a curated set of plugins and custom keybindings to enhance productivity and usability.
 
 ## Dependencies
-Make sure to have the required dependencies installed, such as `lazygit`, `ripgrep`, `python`, `npm` `fd`, and `git`.
+Make sure you have the following dependencies installed: `lazygit`, `ripgrep`, `python`, `npm` `fd`, and `git`.
 =======
 Make sure you have the following dependencies installed for full functionality:
 
