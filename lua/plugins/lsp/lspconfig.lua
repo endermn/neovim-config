@@ -7,13 +7,9 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
-		-- NOTE: LSP Keybinds
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				-- Buffer local mappings
-				-- Check `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
 
 				-- keymaps
@@ -81,35 +77,61 @@ return {
 		-- LSP Servers
 
 		-- lua_ls
-		vim.lsp.config("lua_ls", {capabilities = capabilities})
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			on_init = function(client)
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						-- Tell the language server which version of Lua you're using
+						-- (most likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+					},
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- Depending on the usage, you might want to add additional paths here.
+							-- "${3rd}/luv/library"
+							-- "${3rd}/busted/library",
+						},
+						-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+						-- library = vim.api.nvim_get_runtime_file("", true)
+					},
+				})
+			end,
+			settings = {
+				Lua = {},
+			},
+		})
 
 		-- emmet_ls
-		vim.lsp.config("emmet_ls", {capabilities = capabilities})
+		vim.lsp.config("emmet_ls", { capabilities = capabilities })
 
 		-- denols
-		vim.lsp.config("denols", {capabilities = capabilities})
+		vim.lsp.config("denols", { capabilities = capabilities })
 
 		-- clangd
-		vim.lsp.config("clangd", {capabilities = capabilities})
+		vim.lsp.config("clangd", { capabilities = capabilities })
 
 		-- gopls
-		vim.lsp.config("gopls", {capabilities = capabilities})
+		vim.lsp.config("gopls", { capabilities = capabilities })
+
 		-- Python LSP (pyright)
-		--
 		vim.filetype.add({
 			filename = {
 				["pyproject.toml"] = "python",
 				["setup.py"] = "python",
 				["setup.cfg"] = "python",
 				["requirements.txt"] = "python",
-			}
+			},
 		})
 		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 			filetypes = { "python", "py" },
 		})
-
 	end,
 
-	vim.lsp.enable({"lua_ls", "emmet_ls", "denols", "clangd", "gopls", "pyright"})
+	vim.lsp.enable({ "lua_ls", "emmet_ls", "denols", "clangd", "gopls", "pyright" }),
 }
