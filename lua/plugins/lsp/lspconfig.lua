@@ -119,14 +119,6 @@ return {
 		vim.lsp.config("gopls", { capabilities = capabilities })
 
 		-- Python LSP (pyright)
-		vim.filetype.add({
-			filename = {
-				["pyproject.toml"] = "python",
-				["setup.py"] = "python",
-				["setup.cfg"] = "python",
-				["requirements.txt"] = "python",
-			},
-		})
 		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 			filetypes = { "python", "py" },
