@@ -3,6 +3,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = { "BufReadPre", "BufNewFile" },
         build = ":TSUpdate",
+		dependencies = { "OXY2DEV/markview.nvim" },
         config = function()
             -- import nvim-treesitter plugin
             local treesitter = require("nvim-treesitter.configs")
