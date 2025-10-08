@@ -76,7 +76,7 @@ brew install ripgrep fd git python npm
 | v            | <leader>ai            | `<cmd>gevai <prompt> <code><CR>`                       | Gives the selected code to gevai             |
 | v            | J                     | `:m '>+1<CR>gv=gv`                                     | Move selected lines down                     |
 | v            | K                     | `:m '<-2<CR>gv=gv`                                     | Move selected lines up                       |
-| i            | Ctrl-.                | `copilot#Accept("<CR>")` (expr)                        | Accept GitHub Copilot suggestion             |
+| i            | Ctrl-l                | `copilot#Accept("<CR>")` (expr)                        | Accept GitHub Copilot suggestion             |
 
 - `<leader>` is set to <kbd>Space</kbd>
 - `<localleader>` is set to <kbd>Space</kbd>
