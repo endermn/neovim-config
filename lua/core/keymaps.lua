@@ -1,12 +1,10 @@
-local opts = { noremap = true, silent = true }
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
 
-vim.api.nvim_set_keymap("i", "<C-.>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true })
+vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true })
 
 -- Function to get the visually selected text
 local function get_visual_selection()
