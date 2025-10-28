@@ -113,7 +113,10 @@ return {
 		vim.lsp.config("denols", { capabilities = capabilities })
 
 		-- clangd
-		vim.lsp.config("clangd", { capabilities = capabilities })
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+			filetypes = { "c", "cpp", "objc", "objcpp", "hpp", "h" },
+		})
 
 		-- gopls
 		vim.lsp.config("gopls", { capabilities = capabilities })
