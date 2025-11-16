@@ -1,6 +1,15 @@
 return {
 	{ "datsfilipe/vesper.nvim" },
-
+	{
+		"EdenEast/nightfox.nvim",
+		config = function()
+			require("nightfox").setup({
+				options = {
+					transparent = true,
+				},
+			})
+		end,
+	},
 	{
 		"scottmckendry/cyberdream.nvim",
 		lazy = false,
