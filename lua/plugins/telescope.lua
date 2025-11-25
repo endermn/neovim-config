@@ -11,13 +11,15 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local builtin = require("telescope.builtin")
 
 		telescope.load_extension("fzf")
 		telescope.load_extension("themes")
 
 		telescope.setup({
 			defaults = {
+				preview = {
+					treesitter = false,
+				},
 				path_display = { "smart" },
 				mappings = {
 					i = {
