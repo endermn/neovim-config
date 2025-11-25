@@ -124,7 +124,7 @@ return {
 		-- Python LSP (pyright)
 		vim.lsp.config("pyright", {
 			capabilities = capabilities,
-			filetypes = { "python", "py" },
+			filetypes = { "python", "py", "ipynb" },
 		})
 	end,
 
