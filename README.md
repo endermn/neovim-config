@@ -51,7 +51,6 @@ sudo pacman -S ripgrep fd git python npm
 - treesitter.lua
 - trouble.lua
 - undo-tree.lua
-- wilder.lua
 
 ## Keybindings
 
