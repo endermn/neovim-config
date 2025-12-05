@@ -1,4 +1,18 @@
 return {
+	{
+		"blazkowolf/gruber-darker.nvim",
+		config = function()
+			require("gruber-darker").setup({
+				transparent = true,
+				italic = {
+					comments = false,
+					keywords = false,
+					functions = false,
+					variables = false,
+				}
+			})
+		end,
+	},
 	{ "datsfilipe/vesper.nvim" },
 	{
 		"EdenEast/nightfox.nvim",

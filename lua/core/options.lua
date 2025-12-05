@@ -58,3 +58,9 @@ vim.g.editorconfig = true
 
 -- Copilot
 vim.g.copilot_no_tab_map = true
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.cmd("Copilot disable")
+    end,
+})

@@ -75,12 +75,19 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- LSP Servers
+		local navic = require("nvim-navic")
 
+		local on_attach = function(client, bufnr)
+			-- If the LSP supports symbols (clangd does), attach navic
+			if client.server_capabilities.documentSymbolProvider then
+				navic.attach(client, bufnr)
+			end
+		end
 		-- lua_ls
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
+			on_attach = on_attach,
 			on_init = function(client)
-
 				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
 					runtime = {
 						-- Tell the language server which version of Lua you're using
@@ -107,23 +114,25 @@ return {
 		})
 
 		-- emmet_ls
-		vim.lsp.config("emmet_ls", { capabilities = capabilities })
+		vim.lsp.config("emmet_ls", { capabilities = capabilities, on_attach = on_attach })
 
 		-- denols
-		vim.lsp.config("denols", { capabilities = capabilities })
+		vim.lsp.config("denols", { capabilities = capabilities, on_attach = on_attach })
 
 		-- clangd
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 			filetypes = { "c", "cpp", "objc", "objcpp", "hpp", "h" },
+			on_attach = on_attach
 		})
 
 		-- gopls
-		vim.lsp.config("gopls", { capabilities = capabilities })
+		vim.lsp.config("gopls", { capabilities = capabilities, on_attach = on_attach})
 
 		-- Python LSP (pyright)
 		vim.lsp.config("pyright", {
 			capabilities = capabilities,
+			on_attach = on_attach,
 			filetypes = { "python", "py", "ipynb" },
 		})
 	end,
