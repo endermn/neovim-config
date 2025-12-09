@@ -114,7 +114,10 @@ return {
 		})
 
 		-- emmet_ls
-		vim.lsp.config("emmet_ls", { capabilities = capabilities, on_attach = on_attach })
+		-- vim.lsp.config("emmet_ls", { capabilities = capabilities, on_attach = on_attach })
+
+		-- prettier
+		vim.lsp.config("prettier", { capabilities = capabilities, on_attach = on_attach })
 
 		-- denols
 		vim.lsp.config("denols", { capabilities = capabilities, on_attach = on_attach })
@@ -123,11 +126,11 @@ return {
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 			filetypes = { "c", "cpp", "objc", "objcpp", "hpp", "h" },
-			on_attach = on_attach
+			on_attach = on_attach,
 		})
 
 		-- gopls
-		vim.lsp.config("gopls", { capabilities = capabilities, on_attach = on_attach})
+		vim.lsp.config("gopls", { capabilities = capabilities, on_attach = on_attach })
 
 		-- Python LSP (pyright)
 		vim.lsp.config("pyright", {
