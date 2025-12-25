@@ -28,6 +28,16 @@ return {
 			-- 	timeout_ms = 1000,
 			-- },
 		})
+
+		conform.formatters.clang_format = {
+			args = {
+				"--stdin-filepath",
+				"$FILENAME",
+				-- Use single quotes for the Lua string to handle the braces cleanly
+				"--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never}",
+			},
+		}
+
 		conform.formatters.prettier = {
 			args = {
 				"--stdin-filepath",
