@@ -15,7 +15,7 @@ Make sure you have the following dependencies installed for full functionality:
 
 You can install them on macOS with:
 ```sh
-brew install ripgrep fd git python npm
+brew install ripgrep fd git python npm lazygit go
 ```
 On Linux use your package manager, for example on Arch:
 ```sh
