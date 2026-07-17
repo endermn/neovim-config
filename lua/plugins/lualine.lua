@@ -6,14 +6,14 @@ return {
 		local lazy_status = require("lazy.status")
 
 		local colors = {
-			bg = "#282828",
-			fg = "#e4e4ef",
-			yellow = "#ffdd33",
-			red = "#f43841",
-			green = "#73c936",
-			blue = "#96a6c8",
-			grey = "#484848",
-			dark_grey = "#101010",
+			bg = "#282c34",
+			fg = "#abb2bf",
+			yellow = "#e5c07b",
+			red = "#e06c75",
+			green = "#98c379",
+			blue = "#61afef",
+			grey = "#5c6370",
+			dark_grey = "#3e4452",
 		}
 		local navic = require("nvim-navic")
 
@@ -97,7 +97,7 @@ return {
 			sections = {
 				lualine_a = { mode },
 				lualine_b = { branch },
-				lualine_c = { diff, filename, navic_component},
+				lualine_c = { diff, filename, navic_component },
 				lualine_x = {
 					{
 						lazy_status.updates,

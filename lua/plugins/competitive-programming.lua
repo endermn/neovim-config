@@ -9,7 +9,7 @@ return {
 			testcases_use_single_file = true,
 			testcases_auto_detect_storage = true,
 			-- testcases_directory = "./test_cases"
-			received_contests_problems_path = "$(CWD)/$(CONTEST)/$(PROBLEM)/main.$(FEXT)",
+			received_contests_problems_path = "/$(CONTEST)/$(PROBLEM)/main.$(FEXT)",
 
 			-- 2. For individual problems (not part of a contest):
 			received_problems_path = "$(CWD)/$(PROBLEM)/main.$(FEXT)",

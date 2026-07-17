@@ -41,6 +41,7 @@ return {
                 "cssls",
 				"ruff",
                 "tailwindcss",
+				"pyright",
                 "gopls",
 				"clangd",
                 "emmet_ls",
